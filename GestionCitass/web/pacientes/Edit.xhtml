@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditPacientesTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form class="formulario">
+                <div class="row">
+                    <div class="col-4">
+
+                    </div>
+                    <div class="col-4">
+                        <h:panelGrid columns="2">
+                            <h:outputLabel value="Id" for="idPaciente" />
+                            <h:inputText id="idPaciente" class="form-control" value="#{pacientesController.selected.idPaciente}" title="#{bundle.EditPacientesTitle_idPaciente}" required="true" requiredMessage="#{bundle.EditPacientesRequiredMessage_idPaciente}"/>
+                            <h:outputLabel value="Identificacion" for="pacIdentificacion" />
+                            <h:inputText id="pacIdentificacion" class="form-control" value="#{pacientesController.selected.pacIdentificacion}" title="#{bundle.EditPacientesTitle_pacIdentificacion}" required="true" requiredMessage="#{bundle.EditPacientesRequiredMessage_pacIdentificacion}"/>
+                            <h:outputLabel value="Nombres" for="pacNombres" />
+                            <h:inputText id="pacNombres" class="form-control" value="#{pacientesController.selected.pacNombres}" title="#{bundle.EditPacientesTitle_pacNombres}" required="true" requiredMessage="#{bundle.EditPacientesRequiredMessage_pacNombres}"/>
+                            <h:outputLabel value="Apellidos" for="pacApellidos" />
+                            <h:inputText id="pacApellidos" class="form-control" value="#{pacientesController.selected.pacApellidos}" title="#{bundle.EditPacientesTitle_pacApellidos}" required="true" requiredMessage="#{bundle.EditPacientesRequiredMessage_pacApellidos}"/>
+                            <h:outputLabel value="Fecha Nacieminto" for="pacFechaNacimiento" />
+                            <h:inputText id="pacFechaNacimiento" class="form-control" a:type="date" value="#{pacientesController.selected.pacFechaNacimiento}" title="#{bundle.EditPacientesTitle_pacFechaNacimiento}" required="true" requiredMessage="#{bundle.EditPacientesRequiredMessage_pacFechaNacimiento}">
+                                <f:convertDateTime pattern="yyyy-MM-dd" />
+                            </h:inputText>
+                            <h:outputLabel value="Genero" for="pacSexo" />
+                            <h:inputText id="pacSexo" class="form-control" value="#{pacientesController.selected.pacSexo}" title="#{bundle.EditPacientesTitle_pacSexo}" required="true" requiredMessage="#{bundle.EditPacientesRequiredMessage_pacSexo}"/>
+                        </h:panelGrid>
+                        <h:commandLink action="#{pacientesController.update}" value="Actualizar"/>
+                        <ui:remove>
+                            <br />
+                            <br />
+                            <h:link outcome="View" value="#{bundle.EditPacientesViewLink}"/>
+                            <br />
+                            <h:commandLink action="#{pacientesController.prepareList}" value="#{bundle.EditPacientesShowAllLink}" immediate="true"/>
+                            <br />
+                            <br />
+                            <h:link outcome="/index" value="#{bundle.EditPacientesIndexLink}" />
+                        </ui:remove>
+                    </div>
+                </div>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

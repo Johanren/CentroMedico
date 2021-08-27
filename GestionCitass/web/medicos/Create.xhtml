@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateMedicosTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form class="formulario"> 
+                <div class="row">
+                    <div class="col-3">
+                        
+                    </div>
+                    <div class="col-4">
+                        <h:panelGrid columns="2">
+                    <ui:remove>
+                        
+                    <h:outputLabel value="#{bundle.CreateMedicosLabel_idMedico}" for="idMedico" />
+                    <h:inputText id="idMedico" value="#{medicosController.selected.idMedico}" title="#{bundle.CreateMedicosTitle_idMedico}" required="true" requiredMessage="#{bundle.CreateMedicosRequiredMessage_idMedico}"/>
+                    </ui:remove>
+                    <h:outputLabel value="Identificacion" for="medIdentificacion" />
+                    <h:inputText class="form-control" id="medIdentificacion" value="#{medicosController.selected.medIdentificacion}" title="#{bundle.CreateMedicosTitle_medIdentificacion}" required="true" requiredMessage="#{bundle.CreateMedicosRequiredMessage_medIdentificacion}"/>
+                    <h:outputLabel value="Nombres" for="medNombres" />
+                    <h:inputText class="form-control" id="medNombres" value="#{medicosController.selected.medNombres}" title="#{bundle.CreateMedicosTitle_medNombres}" required="true" requiredMessage="#{bundle.CreateMedicosRequiredMessage_medNombres}"/>
+                    <h:outputLabel value="Apellidos" for="medApellidos" />
+                    <h:inputText class="form-control" id="medApellidos" value="#{medicosController.selected.medApellidos}" title="#{bundle.CreateMedicosTitle_medApellidos}" required="true" requiredMessage="#{bundle.CreateMedicosRequiredMessage_medApellidos}"/>
+                    <h:outputLabel value="Especialidad" for="medEspecialidad" />
+                    <h:inputText class="form-control" id="medEspecialidad" value="#{medicosController.selected.medEspecialidad}" title="#{bundle.CreateMedicosTitle_medEspecialidad}" required="true" requiredMessage="#{bundle.CreateMedicosRequiredMessage_medEspecialidad}"/>
+                    <h:outputLabel value="Telefono" for="medTelefono" />
+                    <h:inputText class="form-control" id="medTelefono" value="#{medicosController.selected.medTelefono}" title="#{bundle.CreateMedicosTitle_medTelefono}" required="true" requiredMessage="#{bundle.CreateMedicosRequiredMessage_medTelefono}"/>
+                    <h:outputLabel value="Correo" for="medCorreo" />
+                    <h:inputText class="form-control" a:type="email" id="medCorreo" value="#{medicosController.selected.medCorreo}" title="#{bundle.CreateMedicosTitle_medCorreo}" required="true" requiredMessage="#{bundle.CreateMedicosRequiredMessage_medCorreo}"/>
+                </h:panelGrid>
+                    </div>
+                </div>
+                <br />
+                <h:commandLink action="#{medicosController.create}" value="#{bundle.CreateMedicosSaveLink}" />
+                <br />
+                <br />
+                <ui:remove>
+                <h:commandLink action="#{medicosController.prepareList}" value="#{bundle.CreateMedicosShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateMedicosIndexLink}"/>
+            
+                </ui:remove></h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
